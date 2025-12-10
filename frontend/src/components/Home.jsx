@@ -418,8 +418,8 @@ const Home = () => {
               <img 
                 src="https://customer-assets.emergentagent.com/job_1cb238f1-67f4-4773-b5dd-94d6618d0eb9/artifacts/y3frjsns_adidar.png" 
                 alt="Adidar Technologies" 
-                className="h-14 w-auto brightness-0 invert"
-                style={{ imageRendering: '-webkit-optimize-contrast' }}
+                className="h-16 md:h-20 w-auto brightness-0 invert"
+                style={{ imageRendering: '-webkit-optimize-contrast', imageRendering: 'crisp-edges' }}
               />
               <p className="text-gray-400 text-sm">
                 Specialized AI solutions for the future.
