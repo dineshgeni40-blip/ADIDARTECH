@@ -63,12 +63,13 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
               src="https://customer-assets.emergentagent.com/job_1cb238f1-67f4-4773-b5dd-94d6618d0eb9/artifacts/y3frjsns_adidar.png" 
               alt="Adidar Technologies" 
-              className="h-10 w-auto"
+              className="h-16 w-auto"
+              style={{ imageRendering: '-webkit-optimize-contrast' }}
             />
           </div>
           <nav className="hidden md:flex items-center space-x-8">
