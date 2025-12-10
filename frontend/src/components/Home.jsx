@@ -1,0 +1,465 @@
+import React, { useState } from 'react';
+import { Button } from './ui/button';
+import { Card, CardContent } from './ui/card';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { useToast } from '../hooks/use-toast';
+import {
+  Brain,
+  Bot,
+  Sparkles,
+  Zap,
+  Network,
+  Lightbulb,
+  ArrowRight,
+  Mail,
+  Phone,
+  MapPin,
+  CheckCircle2
+} from 'lucide-react';
+import { services, portfolio, testimonials, stats } from '../mock';
+
+const iconMap = {
+  brain: Brain,
+  bot: Bot,
+  sparkles: Sparkles,
+  zap: Zap,
+  network: Network,
+  lightbulb: Lightbulb
+};
+
+const Home = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Mock form submission
+    toast({
+      title: "Message Sent!",
+      description: "We'll get back to you within 24 hours.",
+    });
+    setFormData({ name: '', email: '', company: '', message: '' });
+  };
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_1cb238f1-67f4-4773-b5dd-94d6618d0eb9/artifacts/y3frjsns_adidar.png" 
+              alt="Adidar Technologies" 
+              className="h-10 w-auto"
+            />
+          </div>
+          <nav className="hidden md:flex items-center space-x-8">
+            <button onClick={() => scrollToSection('services')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
+              Services
+            </button>
+            <button onClick={() => scrollToSection('about')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
+              About
+            </button>
+            <button onClick={() => scrollToSection('portfolio')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
+              Portfolio
+            </button>
+            <button onClick={() => scrollToSection('testimonials')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
+              Testimonials
+            </button>
+            <Button 
+              onClick={() => scrollToSection('contact')} 
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+            >
+              Contact
+            </Button>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        </div>
+        
+        <div className="relative max-w-5xl mx-auto text-center space-y-8">
+          <div className="inline-block">
+            <div className="relative w-32 h-32 mx-auto mb-8 animate-float">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full opacity-20 blur-xl"></div>
+              <div className="relative w-full h-full border-4 border-cyan-500 rounded-full flex items-center justify-center">
+                <Brain className="w-16 h-16 text-cyan-600" strokeWidth={1.5} />
+              </div>
+            </div>
+          </div>
+          
+          <h1 className="text-6xl md:text-8xl font-light tracking-tight text-gray-900">
+            Intelligence
+            <br />
+            <span className="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">Amplified</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light">
+            Specialized AI solutions for the future. We build AI agents, co-pilots, and automation tools that transform businesses globally.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Button 
+              onClick={() => scrollToSection('contact')} 
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
+            >
+              Start Your AI Journey
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <Button 
+              onClick={() => scrollToSection('services')} 
+              size="lg" 
+              variant="outline"
+              className="border-gray-300 hover:border-cyan-500 hover:text-cyan-600 px-8 py-6 text-lg"
+            >
+              Explore Services
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat) => (
+              <div key={stat.id} className="text-center space-y-2">
+                <div className="text-4xl md:text-5xl font-light bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                  {stat.number}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900">
+              Our Services
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Comprehensive AI solutions tailored to your business needs
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => {
+              const Icon = iconMap[service.icon];
+              return (
+                <Card 
+                  key={service.id} 
+                  className="group border-gray-200 hover:border-cyan-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+                >
+                  <CardContent className="p-8 space-y-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-2xl font-light text-gray-900">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-6 bg-gray-50">
+        <div className="max-w-5xl mx-auto text-center space-y-8">
+          <h2 className="text-5xl md:text-6xl font-light text-gray-900">
+            About Adidar
+          </h2>
+          <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+            <p>
+              At Adidar Technologies, we believe artificial intelligence is not just a tool—it's a transformation catalyst. We specialize exclusively in AI solutions, bringing deep expertise and innovative thinking to every project.
+            </p>
+            <p>
+              Our global team of AI engineers, data scientists, and strategists work at the cutting edge of machine learning, natural language processing, and autonomous systems. We don't just build AI products; we craft intelligent experiences that adapt, learn, and scale.
+            </p>
+            <p>
+              From Fortune 500 enterprises to ambitious startups, we partner with organizations worldwide to turn AI possibilities into measurable business outcomes.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 pt-12">
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-light text-gray-900">AI-First Approach</h3>
+              <p className="text-gray-600">Every solution built with AI at its core</p>
+            </div>
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-light text-gray-900">Global Expertise</h3>
+              <p className="text-gray-600">Serving clients across continents</p>
+            </div>
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-light text-gray-900">Proven Results</h3>
+              <p className="text-gray-600">150+ successful AI deployments</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900">
+              Portfolio
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Real AI solutions delivering measurable impact
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {portfolio.map((project) => (
+              <Card 
+                key={project.id} 
+                className="group border-gray-200 hover:border-cyan-500 transition-all duration-300 hover:shadow-xl"
+              >
+                <CardContent className="p-8 space-y-4">
+                  <div className="inline-block px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full">
+                    {project.category}
+                  </div>
+                  <h3 className="text-xl font-light text-gray-900">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {project.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900">
+              Client Testimonials
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Trusted by leading organizations worldwide
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.id} className="border-gray-200">
+                <CardContent className="p-8 space-y-4">
+                  <p className="text-gray-700 leading-relaxed italic">
+                    "{testimonial.content}"
+                  </p>
+                  <div className="pt-4 border-t border-gray-100">
+                    <div className="font-medium text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900">
+              Let's Build Together
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Ready to transform your business with AI? Get in touch.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900 mb-1">Email</div>
+                  <div className="text-gray-600">hello@adidar.tech</div>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900 mb-1">Phone</div>
+                  <div className="text-gray-600">+1 (555) 123-4567</div>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900 mb-1">Global Presence</div>
+                  <div className="text-gray-600">Serving clients worldwide</div>
+                </div>
+              </div>
+            </div>
+            
+            <Card className="border-gray-200">
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Input 
+                      name="name"
+                      placeholder="Your Name" 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="border-gray-300 focus:border-cyan-500"
+                    />
+                  </div>
+                  <div>
+                    <Input 
+                      name="email"
+                      type="email" 
+                      placeholder="Email Address" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="border-gray-300 focus:border-cyan-500"
+                    />
+                  </div>
+                  <div>
+                    <Input 
+                      name="company"
+                      placeholder="Company Name" 
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="border-gray-300 focus:border-cyan-500"
+                    />
+                  </div>
+                  <div>
+                    <Textarea 
+                      name="message"
+                      placeholder="Tell us about your AI project..." 
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      className="border-gray-300 focus:border-cyan-500"
+                    />
+                  </div>
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div className="space-y-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_1cb238f1-67f4-4773-b5dd-94d6618d0eb9/artifacts/y3frjsns_adidar.png" 
+                alt="Adidar Technologies" 
+                className="h-10 w-auto brightness-0 invert"
+              />
+              <p className="text-gray-400 text-sm">
+                Specialized AI solutions for the future.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-medium mb-4">Services</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><button onClick={() => scrollToSection('services')} className="hover:text-cyan-400 transition-colors">AI Products</button></li>
+                <li><button onClick={() => scrollToSection('services')} className="hover:text-cyan-400 transition-colors">AI Agents</button></li>
+                <li><button onClick={() => scrollToSection('services')} className="hover:text-cyan-400 transition-colors">Co-Pilots</button></li>
+                <li><button onClick={() => scrollToSection('services')} className="hover:text-cyan-400 transition-colors">Automation</button></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-medium mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><button onClick={() => scrollToSection('about')} className="hover:text-cyan-400 transition-colors">About</button></li>
+                <li><button onClick={() => scrollToSection('portfolio')} className="hover:text-cyan-400 transition-colors">Portfolio</button></li>
+                <li><button onClick={() => scrollToSection('testimonials')} className="hover:text-cyan-400 transition-colors">Testimonials</button></li>
+                <li><button onClick={() => scrollToSection('contact')} className="hover:text-cyan-400 transition-colors">Contact</button></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-medium mb-4">Connect</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><a href="mailto:hello@adidar.tech" className="hover:text-cyan-400 transition-colors">hello@adidar.tech</a></li>
+                <li><a href="tel:+15551234567" className="hover:text-cyan-400 transition-colors">+1 (555) 123-4567</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+            <p>&copy; 2025 Adidar Technologies. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;
