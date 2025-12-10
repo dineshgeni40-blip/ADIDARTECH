@@ -328,7 +328,9 @@ const Home = () => {
                 </div>
                 <div>
                   <div className="font-medium text-gray-900 mb-1">Email</div>
-                  <div className="text-gray-600">hello@adidar.tech</div>
+                  <a href="mailto:contact@adidartechnologies.com" className="text-gray-600 hover:text-cyan-600 transition-colors">
+                    contact@adidartechnologies.com
+                  </a>
                 </div>
               </div>
               
@@ -338,7 +340,9 @@ const Home = () => {
                 </div>
                 <div>
                   <div className="font-medium text-gray-900 mb-1">Phone</div>
-                  <div className="text-gray-600">+1 (555) 123-4567</div>
+                  <a href="tel:+917305280054" className="text-gray-600 hover:text-cyan-600 transition-colors">
+                    +91-7305280054
+                  </a>
                 </div>
               </div>
               
@@ -347,8 +351,8 @@ const Home = () => {
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900 mb-1">Global Presence</div>
-                  <div className="text-gray-600">Serving clients worldwide</div>
+                  <div className="font-medium text-gray-900 mb-1">Global Locations</div>
+                  <div className="text-gray-600">India • Singapore • UK • USA</div>
                 </div>
               </div>
             </div>
