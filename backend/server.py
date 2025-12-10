@@ -75,6 +75,128 @@ async def get_status_checks():
     
     return status_checks
 
+def send_email(to_email: str, subject: str, html_content: str):
+    """Send email using Gmail SMTP"""
+    try:
+        smtp_host = os.environ.get('SMTP_HOST')
+        smtp_port = int(os.environ.get('SMTP_PORT', 587))
+        smtp_user = os.environ.get('SMTP_USER')
+        smtp_password = os.environ.get('SMTP_PASSWORD')
+        
+        # Create message
+        msg = MIMEMultipart('alternative')
+        msg['From'] = smtp_user
+        msg['To'] = to_email
+        msg['Subject'] = subject
+        
+        # Add HTML content
+        html_part = MIMEText(html_content, 'html')
+        msg.attach(html_part)
+        
+        # Send email
+        with smtplib.SMTP(smtp_host, smtp_port) as server:
+            server.starttls()
+            server.login(smtp_user, smtp_password)
+            server.send_message(msg)
+        
+        logger.info(f"Email sent successfully to {to_email}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send email: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to send email: {str(e)}")
+
+@api_router.post("/contact")
+async def submit_contact_form(form_data: ContactFormSubmission):
+    """Handle contact form submission and send emails"""
+    try:
+        # Save to database
+        contact_dict = form_data.model_dump()
+        contact_dict['submitted_at'] = datetime.now(timezone.utc).isoformat()
+        contact_dict['id'] = str(uuid.uuid4())
+        await db.contact_submissions.insert_one(contact_dict)
+        
+        contact_email = os.environ.get('CONTACT_EMAIL', 'contact@adidartechnologies.com')
+        
+        # Send notification email to company
+        company_subject = f"New Contact Form Submission from {form_data.name}"
+        company_html = f"""
+        <html>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+                    <h2 style="color: #0891b2; border-bottom: 2px solid #0891b2; padding-bottom: 10px;">
+                        New Contact Form Submission
+                    </h2>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p><strong>Name:</strong> {form_data.name}</p>
+                        <p><strong>Email:</strong> {form_data.email}</p>
+                        <p><strong>Company:</strong> {form_data.company if form_data.company else 'Not provided'}</p>
+                        <p><strong>Message:</strong></p>
+                        <p style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #0891b2;">
+                            {form_data.message}
+                        </p>
+                    </div>
+                    <p style="color: #666; font-size: 12px; margin-top: 30px;">
+                        Submitted at: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC
+                    </p>
+                </div>
+            </body>
+        </html>
+        """
+        send_email(contact_email, company_subject, company_html)
+        
+        # Send confirmation email to customer
+        customer_subject = "Thank you for contacting Adidar Technologies"
+        customer_html = f"""
+        <html>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h1 style="color: #0891b2; margin-bottom: 10px;">Adidar Technologies</h1>
+                        <p style="color: #666; font-style: italic;">Intelligence Amplified</p>
+                    </div>
+                    
+                    <h2 style="color: #0891b2;">Thank you for reaching out!</h2>
+                    
+                    <p>Dear {form_data.name},</p>
+                    
+                    <p>We have received your message and appreciate you contacting Adidar Technologies. Our team will review your inquiry and get back to you within 24 hours.</p>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h3 style="margin-top: 0; color: #0891b2;">Your Message:</h3>
+                        <p style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #0891b2;">
+                            {form_data.message}
+                        </p>
+                    </div>
+                    
+                    <p>In the meantime, feel free to explore our AI solutions and services on our website.</p>
+                    
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e5e7eb;">
+                        <p style="margin: 5px 0;"><strong>Contact Us:</strong></p>
+                        <p style="margin: 5px 0;">Email: {contact_email}</p>
+                        <p style="margin: 5px 0;">Phone: +91-7305280054</p>
+                        <p style="margin: 5px 0;">Locations: India • Singapore • UK • USA</p>
+                    </div>
+                    
+                    <p style="color: #666; font-size: 12px; margin-top: 30px; text-align: center;">
+                        © 2025 Adidar Technologies. Specialized AI solutions for the future.
+                    </p>
+                </div>
+            </body>
+        </html>
+        """
+        send_email(form_data.email, customer_subject, customer_html)
+        
+        return {
+            "success": True,
+            "message": "Thank you for contacting us! We'll get back to you within 24 hours."
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error processing contact form: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to process contact form")
+
 # Include the router in the main app
 app.include_router(api_router)
 
