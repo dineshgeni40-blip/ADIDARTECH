@@ -4,6 +4,7 @@ import { Card, CardContent } from './ui/card';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from '../hooks/use-toast';
+import axios from 'axios';
 import {
   Brain,
   Bot,
@@ -18,6 +19,9 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { services, portfolio, testimonials, stats } from '../mock';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const iconMap = {
   brain: Brain,
