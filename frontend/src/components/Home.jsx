@@ -453,8 +453,9 @@ const Home = () => {
             <div>
               <h4 className="font-medium mb-4">Connect</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="mailto:hello@adidar.tech" className="hover:text-cyan-400 transition-colors">hello@adidar.tech</a></li>
-                <li><a href="tel:+15551234567" className="hover:text-cyan-400 transition-colors">+1 (555) 123-4567</a></li>
+                <li><a href="mailto:contact@adidartechnologies.com" className="hover:text-cyan-400 transition-colors">contact@adidartechnologies.com</a></li>
+                <li><a href="tel:+917305280054" className="hover:text-cyan-400 transition-colors">+91-7305280054</a></li>
+                <li className="pt-2 text-xs">India • Singapore • UK • USA</li>
               </ul>
             </div>
           </div>
