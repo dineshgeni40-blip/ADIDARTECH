@@ -109,27 +109,24 @@ export const portfolio = [
 export const testimonials = [
   {
     id: 1,
-    name: "Sarah Chen",
-    role: "CTO, TechVenture Inc.",
-    content: "Adidar Technologies transformed our vision into reality. Their AI agents reduced our operational costs by 45% while improving customer satisfaction scores dramatically."
+    name: "Rajesh Kumar",
+    role: "Director, JK Automotive Private Limited",
+    company: "JK Automotive Private Limited, Chennai",
+    content: "Adidar Technologies developed an exceptional AI-powered e-commerce platform for our automotive spare parts business. Their solution streamlined our inventory management and significantly improved our customer experience. The team's expertise in AI product development is truly impressive."
   },
   {
     id: 2,
-    name: "Michael Rodriguez",
-    role: "Head of Innovation, GlobalFinance",
-    content: "The co-pilot solution they built is phenomenal. Our team's productivity increased by 60%, and the AI's accuracy continues to impress us daily."
+    name: "Venkatesh Reddy",
+    role: "Managing Director, Sri Yanam Steels",
+    company: "Sri Yanam Steels Private Limited, Pondicherry",
+    content: "The AI automation solutions implemented by Adidar have revolutionized our steel casting operations. We've seen a 40% improvement in process efficiency and significant reduction in quality control issues. Their team understood our manufacturing needs perfectly."
   },
   {
     id: 3,
-    name: "Emily Watson",
-    role: "CEO, HealthTech Solutions",
-    content: "Working with Adidar was seamless. They understood our complex requirements and delivered an AI product that exceeded all expectations. True AI experts."
-  },
-  {
-    id: 4,
-    name: "David Kumar",
-    role: "VP of Engineering, AutomateNow",
-    content: "Best decision we made was partnering with Adidar. Their automation tools saved us thousands of hours and their support is exceptional."
+    name: "Suresh Babu",
+    role: "CEO, Sri AquaTech India",
+    company: "Sri AquaTech India Private Limited",
+    content: "Adidar's AI analytics platform transformed how we analyze water quality data and manage our aquaculture operations. Their innovative approach to data science and machine learning has given us a competitive edge in the market. Highly recommended!"
   }
 ];
 
