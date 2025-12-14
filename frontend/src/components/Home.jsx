@@ -102,6 +102,9 @@ const Home = () => {
             <button onClick={() => scrollToSection('about')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
               About
             </button>
+            <button onClick={() => scrollToSection('clients')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
+              Clients
+            </button>
             <button onClick={() => scrollToSection('portfolio')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
               Portfolio
             </button>
