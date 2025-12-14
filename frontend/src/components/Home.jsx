@@ -19,7 +19,7 @@ import {
   MapPin,
   CheckCircle2
 } from 'lucide-react';
-import { services, portfolio, testimonials, stats } from '../mock';
+import { services, portfolio, testimonials, stats, clients } from '../mock';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
