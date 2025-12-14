@@ -343,37 +343,74 @@ const Home = () => {
           
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-white" />
+              <div>
+                <h3 className="text-xl font-medium text-gray-900 mb-6">Our Global Offices</h3>
+                
+                {/* United Kingdom Office */}
+                <div className="mb-6 pb-6 border-b border-gray-200">
+                  <div className="flex items-start space-x-3 mb-3">
+                    <MapPin className="w-5 h-5 text-cyan-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium text-gray-900 mb-2">United Kingdom</div>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        50, Toronto Road, Gillingham<br />
+                        ME7 2EN, Kent, United Kingdom
+                      </p>
+                      <a href="tel:+447440283178" className="text-cyan-600 hover:text-cyan-700 text-sm mt-2 inline-block">
+                        +44 7440 283178
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-medium text-gray-900 mb-1">Email</div>
-                  <a href="mailto:contact@adidartechnologies.com" className="text-gray-600 hover:text-cyan-600 transition-colors">
-                    contact@adidartechnologies.com
-                  </a>
+                
+                {/* Hyderabad Office */}
+                <div className="mb-6 pb-6 border-b border-gray-200">
+                  <div className="flex items-start space-x-3 mb-3">
+                    <MapPin className="w-5 h-5 text-cyan-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium text-gray-900 mb-2">Hyderabad, India</div>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        252A, 11th Cross, Western Hills<br />
+                        Addagutta Society, KPHB<br />
+                        Hyderabad – 500072
+                      </p>
+                      <a href="tel:+919944562638" className="text-cyan-600 hover:text-cyan-700 text-sm mt-2 inline-block">
+                        +91 99445 62638
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-white" />
+                
+                {/* Chennai Office */}
+                <div className="mb-6">
+                  <div className="flex items-start space-x-3 mb-3">
+                    <MapPin className="w-5 h-5 text-cyan-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium text-gray-900 mb-2">Chennai, India</div>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        ADIDAR TECH INDIA PVT LTD<br />
+                        P. No. 2B, Kakkanji Street, Tharapakkam<br />
+                        Pallavaram TK, Kanchipuram<br />
+                        Chennai – 600128
+                      </p>
+                      <a href="tel:+919944562638" className="text-cyan-600 hover:text-cyan-700 text-sm mt-2 inline-block">
+                        +91 99445 62638
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-medium text-gray-900 mb-1">Phone</div>
-                  <a href="tel:+917305280054" className="text-gray-600 hover:text-cyan-600 transition-colors">
-                    +91-7305280054
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <div className="font-medium text-gray-900 mb-1">Global Locations</div>
-                  <div className="text-gray-600">India • Singapore • UK • USA</div>
+                
+                {/* Email */}
+                <div className="pt-6 border-t border-gray-200">
+                  <div className="flex items-start space-x-3">
+                    <Mail className="w-5 h-5 text-cyan-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium text-gray-900 mb-1">Email</div>
+                      <a href="mailto:contact@adidartechnologies.com" className="text-cyan-600 hover:text-cyan-700 text-sm">
+                        contact@adidartechnologies.com
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
