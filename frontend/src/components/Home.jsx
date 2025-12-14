@@ -393,16 +393,28 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <Card key={testimonial.id} className="border-gray-200">
+              <Card key={testimonial.id} className="border-gray-200 hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 space-y-4">
-                  <p className="text-gray-700 leading-relaxed italic">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                      <span className="text-2xl font-light text-white">
+                        {testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed text-sm italic">
                     "{testimonial.content}"
                   </p>
-                  <div className="pt-4 border-t border-gray-100">
+                  <div className="pt-4 border-t border-gray-100 text-center">
                     <div className="font-medium text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                    <div className="text-sm text-gray-600 mt-1">{testimonial.role}</div>
+                    {testimonial.company && (
+                      <div className="text-xs text-cyan-600 mt-2">
+                        {testimonial.company}
+                      </div>
+                    )}
                   </div>
                 </CardContent>
               </Card>
