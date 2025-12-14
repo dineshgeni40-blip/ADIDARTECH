@@ -199,10 +199,20 @@ const Home = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => {
               const Icon = iconMap[service.icon];
+              const serviceLinks = {
+                1: '/ai-product',
+                2: '/ai-agents',
+                3: '/ai-copilots',
+                4: '/ai-automation',
+                5: '/machine-learning',
+                6: '/ai-product'
+              };
+              
               return (
                 <Card 
                   key={service.id} 
-                  className="group border-gray-200 hover:border-cyan-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+                  className="group border-gray-200 hover:border-cyan-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer"
+                  onClick={() => navigate(serviceLinks[service.id])}
                 >
                   <CardContent className="p-8 space-y-4">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -214,6 +224,10 @@ const Home = () => {
                     <p className="text-gray-600 leading-relaxed">
                       {service.description}
                     </p>
+                    <div className="pt-2 flex items-center text-cyan-600 group-hover:text-cyan-700">
+                      <span className="text-sm font-medium">Learn More</span>
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </CardContent>
                 </Card>
               );
