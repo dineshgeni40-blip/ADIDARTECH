@@ -280,6 +280,69 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Our Clients Section */}
+      <section id="clients" className="py-24 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900">
+              Our Clients
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Trusted by leading businesses across industries
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {clients.map((client) => (
+              <Card 
+                key={client.id} 
+                className="group border-gray-200 hover:border-cyan-500 transition-all duration-300 hover:shadow-xl"
+              >
+                <CardContent className="p-8 space-y-4">
+                  <div className="h-20 flex items-center justify-center mb-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-medium text-gray-900 mb-1">
+                        {client.name}
+                      </div>
+                      <div className="text-sm text-cyan-600">
+                        {client.location}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="inline-block px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full">
+                    {client.industry}
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {client.description}
+                  </p>
+                  {client.website && (
+                    <a 
+                      href={client.website} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-cyan-600 hover:text-cyan-700 text-sm inline-flex items-center"
+                    >
+                      Visit Website
+                      <ArrowRight className="ml-1 h-3 w-3" />
+                    </a>
+                  )}
+                  <div className="pt-3 border-t border-gray-100">
+                    <div className="text-xs text-gray-500 mb-2">Services Provided:</div>
+                    <div className="flex flex-wrap gap-2">
+                      {client.services.map((service, idx) => (
+                        <span key={idx} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                          {service}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Section */}
       <section id="portfolio" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
