@@ -391,7 +391,7 @@ const Home = () => {
                         Hyderabad – 500072
                       </p>
                       <a href="tel:+919944562638" className="text-cyan-600 hover:text-cyan-700 text-sm mt-2 inline-block">
-                        +91 99445 62638
+                        +91-9944562638
                       </a>
                     </div>
                   </div>
@@ -410,7 +410,7 @@ const Home = () => {
                         Chennai – 600128
                       </p>
                       <a href="tel:+919944562638" className="text-cyan-600 hover:text-cyan-700 text-sm mt-2 inline-block">
-                        +91 99445 62638
+                        +91-9944562638
                       </a>
                     </div>
                   </div>
