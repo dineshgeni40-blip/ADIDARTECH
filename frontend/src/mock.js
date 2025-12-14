@@ -39,6 +39,34 @@ export const services = [
   }
 ];
 
+export const clients = [
+  {
+    id: 1,
+    name: 'JK Automotive Private Limited',
+    location: 'Chennai, India',
+    industry: 'Automotive Parts & E-Commerce',
+    description: 'Leading automobile spare parts supplier specializing in high-quality components for major automotive brands.',
+    website: 'https://jkautomotive.co.in',
+    services: ['AI Product Development', 'E-Commerce Solutions']
+  },
+  {
+    id: 2,
+    name: 'Sri Yanam Steels Private Limited',
+    location: 'Pondicherry, India',
+    industry: 'Iron & Steel Castings',
+    description: 'Established steel manufacturing company with over 40 years of expertise in iron and steel castings.',
+    services: ['AI Automation', 'Process Optimization']
+  },
+  {
+    id: 3,
+    name: 'Sri AquaTech India Private Limited',
+    location: 'India',
+    industry: 'Water Technology & Solutions',
+    description: 'Innovative water technology solutions provider focused on sustainable aquaculture and water management.',
+    services: ['AI Solutions', 'Data Analytics']
+  }
+];
+
 export const portfolio = [
   {
     id: 1,
