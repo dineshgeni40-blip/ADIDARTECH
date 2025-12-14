@@ -173,7 +173,7 @@ async def submit_contact_form(form_data: ContactFormSubmission):
                     <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e5e7eb;">
                         <p style="margin: 5px 0;"><strong>Contact Us:</strong></p>
                         <p style="margin: 5px 0;">Email: {contact_email}</p>
-                        <p style="margin: 5px 0;">Phone: +91-7305280054</p>
+                        <p style="margin: 5px 0;">Phone: +91-9944562638</p>
                         <p style="margin: 5px 0;">Locations: India • Singapore • UK • USA</p>
                     </div>
                     
