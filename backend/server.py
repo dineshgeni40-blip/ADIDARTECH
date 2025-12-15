@@ -49,6 +49,16 @@ class ContactFormSubmission(BaseModel):
     company: str = ""
     message: str
 
+class PaymentOrder(BaseModel):
+    amount: int  # Amount in paise (e.g., 50000 for ₹500)
+    currency: str = "INR"
+    receipt: str = None
+
+class PaymentVerification(BaseModel):
+    razorpay_order_id: str
+    razorpay_payment_id: str
+    razorpay_signature: str
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
