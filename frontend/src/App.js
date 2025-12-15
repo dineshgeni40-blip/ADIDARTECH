@@ -6,6 +6,7 @@ import AICoPilots from "./components/AICoPilots";
 import AIAutomation from "./components/AIAutomation";
 import AIProduct from "./components/AIProduct";
 import MachineLearning from "./components/MachineLearning";
+import TrainingDetail from "./components/TrainingDetail";
 import { Toaster } from "./components/ui/sonner";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/ai-automation" element={<AIAutomation />} />
           <Route path="/ai-product" element={<AIProduct />} />
           <Route path="/machine-learning" element={<MachineLearning />} />
+          <Route path="/training/:slug" element={<TrainingDetail />} />
         </Routes>
       </BrowserRouter>
       <Toaster />
