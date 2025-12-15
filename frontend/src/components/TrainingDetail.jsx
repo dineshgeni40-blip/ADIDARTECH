@@ -297,19 +297,31 @@ const TrainingDetail = () => {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Join hundreds of professionals who've transformed their careers with our training programs.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          
+          <div className="p-6 bg-white rounded-lg shadow-lg max-w-md mx-auto mb-6">
+            <div className="text-center mb-4">
+              <div className="text-sm text-gray-600 mb-2">Course Fee</div>
+              <div className="flex items-center justify-center space-x-2">
+                <IndianRupee className="w-6 h-6 text-cyan-600" />
+                <span className="text-3xl font-light text-gray-900">25,000</span>
+              </div>
+            </div>
             <Button 
-              onClick={scrollToContact} 
+              onClick={handlePayment}
+              disabled={isProcessing}
               size="lg"
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
             >
-              Enroll Now
+              {isProcessing ? 'Processing...' : 'Pay Now & Enroll'}
             </Button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               onClick={scrollToContact} 
               size="lg" 
               variant="outline"
-              className="border-gray-300 hover:border-cyan-500 px-8 py-6 text-lg"
+              className="border-gray-300 hover:border-cyan-500 px-8 py-6"
             >
               Request Callback
             </Button>
