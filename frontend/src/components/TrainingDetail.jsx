@@ -14,6 +14,8 @@ const COURSE_FEE = 25000; // ₹25,000
 const TrainingDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isProcessing, setIsProcessing] = useState(false);
   const training = trainings.find(t => t.slug === slug);
 
   if (!training) {
@@ -29,6 +31,99 @@ const TrainingDetail = () => {
 
   const scrollToContact = () => {
     navigate('/#contact');
+  };
+
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const handlePayment = async () => {
+    setIsProcessing(true);
+
+    try {
+      const scriptLoaded = await loadRazorpayScript();
+      if (!scriptLoaded) {
+        throw new Error('Failed to load Razorpay SDK');
+      }
+
+      // Create order
+      const orderResponse = await axios.post(`${API}/payment/create-order`, {
+        amount: COURSE_FEE * 100, // Convert to paise
+        currency: 'INR',
+        receipt: `training_${training.slug}_${Date.now()}`
+      });
+
+      const { order_id, key_id } = orderResponse.data;
+
+      // Razorpay options
+      const options = {
+        key: key_id,
+        amount: COURSE_FEE * 100,
+        currency: 'INR',
+        name: 'Adidar Technologies',
+        description: `${training.title} - Training Program`,
+        order_id: order_id,
+        handler: async function (response) {
+          try {
+            const verifyResponse = await axios.post(`${API}/payment/verify`, {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature
+            });
+
+            if (verifyResponse.data.success) {
+              toast({
+                title: "Payment Successful!",
+                description: `Enrollment confirmed for ${training.title}. We'll contact you shortly.`,
+              });
+              setTimeout(() => navigate('/#contact'), 2000);
+            }
+          } catch (error) {
+            toast({
+              title: "Payment Verification Failed",
+              description: error.response?.data?.detail || "Please contact support",
+              variant: "destructive"
+            });
+          }
+        },
+        prefill: {
+          name: '',
+          email: 'contact@adidartechnologies.com',
+          contact: '+919944562638'
+        },
+        notes: {
+          training: training.title,
+          slug: training.slug
+        },
+        theme: {
+          color: '#06b6d4'
+        },
+        modal: {
+          ondismiss: function() {
+            setIsProcessing(false);
+          }
+        }
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+      setIsProcessing(false);
+
+    } catch (error) {
+      console.error('Payment error:', error);
+      toast({
+        title: "Payment Failed",
+        description: error.response?.data?.detail || "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+      setIsProcessing(false);
+    }
   };
 
   return (
