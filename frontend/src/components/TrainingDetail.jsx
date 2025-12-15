@@ -1,0 +1,206 @@
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Button } from './ui/button';
+import { Card, CardContent } from './ui/card';
+import { ArrowLeft, CheckCircle2, Clock, Award, Briefcase, BookOpen, Users } from 'lucide-react';
+import { trainings } from '../mock';
+
+const TrainingDetail = () => {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const training = trainings.find(t => t.slug === slug);
+
+  if (!training) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-light text-gray-900 mb-4">Training Not Found</h1>
+          <Button onClick={() => navigate('/')}>Back to Home</Button>
+        </div>
+      </div>
+    );
+  }
+
+  const scrollToContact = () => {
+    navigate('/#contact');
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate('/')}>
+            <img 
+              src="https://customer-assets.emergentagent.com/job_1cb238f1-67f4-4773-b5dd-94d6618d0eb9/artifacts/y3frjsns_adidar.png" 
+              alt="Adidar Technologies" 
+              className="h-20 md:h-24 w-auto"
+              style={{ imageRendering: '-webkit-optimize-contrast', imageRendering: 'crisp-edges' }}
+            />
+          </div>
+          <Button 
+            onClick={() => navigate('/')} 
+            variant="outline"
+            className="border-gray-300 hover:border-cyan-500"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Button>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] flex items-center justify-center px-6 pt-32 pb-20 bg-gradient-to-br from-cyan-50 to-blue-50">
+        <div className="relative max-w-5xl mx-auto text-center space-y-6">
+          <div className="inline-flex items-center space-x-4 mb-4">
+            <span className="px-4 py-1 bg-cyan-100 text-cyan-700 text-sm rounded-full">{training.level}</span>
+            <span className="px-4 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">{training.duration}</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-light tracking-tight text-gray-900">
+            {training.title}
+          </h1>
+          
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {training.overview}
+          </p>
+          
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
+            {training.certification && (
+              <div className="flex items-center space-x-2 text-gray-700">
+                <Award className="w-5 h-5 text-cyan-600" />
+                <span>Certification Included</span>
+              </div>
+            )}
+            {training.placementSupport && (
+              <div className="flex items-center space-x-2 text-gray-700">
+                <Briefcase className="w-5 h-5 text-cyan-600" />
+                <span>Placement Support</span>
+              </div>
+            )}
+            <div className="flex items-center space-x-2 text-gray-700">
+              <Clock className="w-5 h-5 text-cyan-600" />
+              <span>3 Months Duration</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Highlights */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-light text-gray-900 mb-12 text-center">Why Choose This Training?</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {training.highlights.map((highlight, index) => (
+              <Card key={index} className="border-gray-200">
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-cyan-600 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{highlight}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Curriculum */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-light text-gray-900 mb-4">Course Curriculum</h2>
+            <p className="text-xl text-gray-600">Comprehensive coverage of all essential topics</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-4">
+            {training.curriculum.map((module, index) => (
+              <Card key={index} className="border-gray-200">
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-sm font-medium">{index + 1}</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-gray-900 font-medium">{module}</h3>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Outcomes */}
+      <section className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-light text-gray-900 mb-12 text-center">What You'll Achieve</h2>
+          <div className="space-y-4">
+            {training.outcomes.map((outcome, index) => (
+              <Card key={index} className="border-gray-200">
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle2 className="w-6 h-6 text-cyan-600 flex-shrink-0 mt-1" />
+                    <p className="text-gray-700 text-lg">{outcome}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Prerequisites */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <Card className="border-gray-200">
+            <CardContent className="p-8">
+              <div className="flex items-start space-x-4">
+                <BookOpen className="w-8 h-8 text-cyan-600 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-light text-gray-900 mb-3">Prerequisites</h3>
+                  <p className="text-gray-700 text-lg">{training.prerequisites}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-cyan-50 to-blue-50">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-900">
+            Ready to Start Your Journey?
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Join hundreds of professionals who've transformed their careers with our training programs.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button 
+              onClick={scrollToContact} 
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
+            >
+              Enroll Now
+            </Button>
+            <Button 
+              onClick={scrollToContact} 
+              size="lg" 
+              variant="outline"
+              className="border-gray-300 hover:border-cyan-500 px-8 py-6 text-lg"
+            >
+              Request Callback
+            </Button>
+          </div>
+          <p className="text-sm text-gray-500">
+            Limited seats available • Next batch starts soon
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default TrainingDetail;
