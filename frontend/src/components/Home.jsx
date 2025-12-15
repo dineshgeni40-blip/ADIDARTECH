@@ -107,6 +107,28 @@ const Home = () => {
             <button onClick={() => scrollToSection('services')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
               Services
             </button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="text-sm text-gray-700 hover:text-cyan-600 transition-colors flex items-center space-x-1">
+                  <span>Software Trainings</span>
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64">
+                {trainings.map((training) => (
+                  <DropdownMenuItem
+                    key={training.id}
+                    onClick={() => navigate(`/training/${training.slug}`)}
+                    className="cursor-pointer"
+                  >
+                    <div className="flex flex-col">
+                      <span className="font-medium">{training.title}</span>
+                      <span className="text-xs text-gray-500">{training.duration} • {training.level}</span>
+                    </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             <button onClick={() => scrollToSection('about')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
               About
             </button>
