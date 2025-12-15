@@ -8,6 +8,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PayNow from './PayNow';
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import {
   Brain,
   Bot,
   Sparkles,
@@ -18,9 +24,10 @@ import {
   Mail,
   Phone,
   MapPin,
-  CheckCircle2
+  CheckCircle2,
+  ChevronDown
 } from 'lucide-react';
-import { services, portfolio, testimonials, stats, clients } from '../mock';
+import { services, portfolio, testimonials, stats, clients, trainings } from '../mock';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
