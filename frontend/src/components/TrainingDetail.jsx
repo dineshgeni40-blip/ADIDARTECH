@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { ArrowLeft, CheckCircle2, Clock, Award, Briefcase, BookOpen, Users } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Clock, Award, Briefcase, BookOpen, Users, IndianRupee } from 'lucide-react';
 import { trainings } from '../mock';
+import { useToast } from '../hooks/use-toast';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+const COURSE_FEE = 25000; // ₹25,000
 
 const TrainingDetail = () => {
   const { slug } = useParams();
