@@ -44,6 +44,7 @@ const iconMap = {
 const Home = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
