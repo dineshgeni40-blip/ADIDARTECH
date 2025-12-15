@@ -152,3 +152,222 @@ export const stats = [
     label: "Global Support"
   }
 ];
+
+export const trainings = [
+  {
+    id: 1,
+    slug: 'ai-fundamentals',
+    title: 'AI Fundamentals & Applications',
+    shortDesc: 'Master the basics of Artificial Intelligence and its real-world applications',
+    duration: '3 Months',
+    level: 'Beginner',
+    certification: true,
+    placementSupport: true,
+    overview: 'Comprehensive introduction to AI concepts, techniques, and practical applications. Perfect for beginners looking to start a career in AI.',
+    highlights: [
+      'Industry-recognized certification',
+      '100% placement assistance',
+      'Live projects & case studies',
+      'Expert instructors from top AI companies',
+      'Flexible weekend & weekday batches'
+    ],
+    curriculum: [
+      'Introduction to AI & Machine Learning',
+      'Python Programming for AI',
+      'Data Analysis & Visualization',
+      'Supervised & Unsupervised Learning',
+      'Neural Networks Basics',
+      'AI Tools & Frameworks (TensorFlow, PyTorch)',
+      'Real-world AI Projects',
+      'Interview Preparation & Soft Skills'
+    ],
+    prerequisites: 'Basic computer knowledge. No prior programming experience required.',
+    outcomes: [
+      'Build and deploy AI models',
+      'Understand core AI algorithms',
+      'Work on 5+ real-world projects',
+      'Get certified by Adidar Technologies',
+      'Receive placement support for 6 months'
+    ]
+  },
+  {
+    id: 2,
+    slug: 'machine-learning',
+    title: 'Advanced Machine Learning',
+    shortDesc: 'Deep dive into ML algorithms, model optimization, and production deployment',
+    duration: '3 Months',
+    level: 'Intermediate',
+    certification: true,
+    placementSupport: true,
+    overview: 'Advanced training in machine learning algorithms, feature engineering, and deploying ML models to production environments.',
+    highlights: [
+      'Hands-on with 10+ ML algorithms',
+      'MLOps & model deployment training',
+      'Kaggle competition participation',
+      'Industry-expert mentorship',
+      'Guaranteed interview opportunities'
+    ],
+    curriculum: [
+      'Advanced Regression & Classification',
+      'Ensemble Methods (Random Forest, XGBoost)',
+      'Feature Engineering & Selection',
+      'Model Evaluation & Hyperparameter Tuning',
+      'Time Series Forecasting',
+      'Recommendation Systems',
+      'MLOps & Model Deployment',
+      'Portfolio Building & Interview Prep'
+    ],
+    prerequisites: 'Basic Python and statistics knowledge recommended.',
+    outcomes: [
+      'Master 10+ ML algorithms',
+      'Deploy models to production',
+      'Build a strong ML portfolio',
+      'Industry-ready certification',
+      'Direct referrals to partner companies'
+    ]
+  },
+  {
+    id: 3,
+    slug: 'deep-learning',
+    title: 'Deep Learning & Neural Networks',
+    shortDesc: 'Master deep learning architectures and build cutting-edge AI applications',
+    duration: '3 Months',
+    level: 'Advanced',
+    certification: true,
+    placementSupport: true,
+    overview: 'Comprehensive training in deep learning, covering CNNs, RNNs, Transformers, and state-of-the-art architectures for computer vision and NLP.',
+    highlights: [
+      'Work with GPUs & cloud platforms',
+      'Build production-grade deep learning models',
+      'Research paper implementation',
+      'Capstone project on latest AI trends',
+      'Priority placement with AI startups'
+    ],
+    curriculum: [
+      'Neural Networks Deep Dive',
+      'Convolutional Neural Networks (CNNs)',
+      'Recurrent Neural Networks (RNNs, LSTMs)',
+      'Transformers & Attention Mechanisms',
+      'Generative AI (GANs, VAEs)',
+      'Transfer Learning & Fine-tuning',
+      'Large Language Models (LLMs)',
+      'Research Project & Publication Guidance'
+    ],
+    prerequisites: 'Strong Python skills and basic ML knowledge required.',
+    outcomes: [
+      'Build state-of-the-art AI models',
+      'Implement research papers',
+      'Work on cutting-edge projects',
+      'Advanced certification',
+      'Access to exclusive job opportunities'
+    ]
+  },
+  {
+    id: 4,
+    slug: 'nlp',
+    title: 'Natural Language Processing',
+    shortDesc: 'Build intelligent NLP applications using modern language models',
+    duration: '3 Months',
+    level: 'Intermediate',
+    certification: true,
+    placementSupport: true,
+    overview: 'Specialized training in NLP covering text processing, sentiment analysis, chatbots, and working with large language models like GPT and BERT.',
+    highlights: [
+      'Work with OpenAI GPT, BERT, T5',
+      'Build chatbots & virtual assistants',
+      'Industry NLP projects',
+      'LangChain & vector databases',
+      'NLP-focused placement assistance'
+    ],
+    curriculum: [
+      'Text Processing & Feature Extraction',
+      'Sentiment Analysis & Classification',
+      'Named Entity Recognition (NER)',
+      'Language Models (BERT, GPT, T5)',
+      'Chatbot Development',
+      'LangChain & RAG Systems',
+      'Prompt Engineering',
+      'NLP Portfolio Projects'
+    ],
+    prerequisites: 'Python programming and basic ML concepts.',
+    outcomes: [
+      'Build advanced NLP applications',
+      'Master modern language models',
+      'Create production-ready chatbots',
+      'NLP specialist certification',
+      'Connect with NLP-hiring companies'
+    ]
+  },
+  {
+    id: 5,
+    slug: 'computer-vision',
+    title: 'Computer Vision & Image Processing',
+    shortDesc: 'Create AI systems that can see and understand visual information',
+    duration: '3 Months',
+    level: 'Intermediate',
+    certification: true,
+    placementSupport: true,
+    overview: 'Master computer vision techniques including object detection, image segmentation, facial recognition, and video analysis using deep learning.',
+    highlights: [
+      'Work with YOLO, ResNet, U-Net',
+      'Real-time video processing',
+      'Drone & robotics vision projects',
+      'OpenCV & advanced CV libraries',
+      'CV-focused job placement'
+    ],
+    curriculum: [
+      'Image Processing Fundamentals',
+      'Object Detection & Tracking',
+      'Image Segmentation',
+      'Facial Recognition Systems',
+      'Video Analysis & Processing',
+      'Generative Models for Images',
+      '3D Vision & Depth Estimation',
+      'Industry CV Projects'
+    ],
+    prerequisites: 'Python and basic understanding of neural networks.',
+    outcomes: [
+      'Build computer vision applications',
+      'Implement object detection systems',
+      'Create real-time video processing apps',
+      'Computer vision certification',
+      'Access to CV-focused job roles'
+    ]
+  },
+  {
+    id: 6,
+    slug: 'ai-business',
+    title: 'AI for Business Leaders',
+    shortDesc: 'Strategic AI implementation for executives and business professionals',
+    duration: '3 Months',
+    level: 'Executive',
+    certification: true,
+    placementSupport: false,
+    overview: 'Non-technical AI training focused on business strategy, AI adoption, ROI analysis, and leading AI transformation in organizations.',
+    highlights: [
+      'No coding required',
+      'AI strategy & implementation',
+      'Case studies from Fortune 500',
+      'Network with AI leaders',
+      'Executive certification'
+    ],
+    curriculum: [
+      'AI Business Fundamentals',
+      'AI Use Cases Across Industries',
+      'Building AI Strategy & Roadmap',
+      'AI ROI & Value Assessment',
+      'Managing AI Teams & Projects',
+      'AI Ethics & Governance',
+      'Change Management for AI',
+      'Executive Capstone Project'
+    ],
+    prerequisites: 'Business or management background. No technical skills needed.',
+    outcomes: [
+      'Lead AI transformation initiatives',
+      'Make informed AI investment decisions',
+      'Build AI implementation roadmaps',
+      'Executive leadership certification',
+      'Join exclusive AI leaders network'
+    ]
+  }
+];
