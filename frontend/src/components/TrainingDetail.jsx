@@ -184,6 +184,25 @@ const TrainingDetail = () => {
               <span>3 Months Duration</span>
             </div>
           </div>
+
+          <div className="mt-8 p-6 bg-white rounded-lg shadow-lg max-w-md mx-auto">
+            <div className="text-center mb-4">
+              <div className="text-sm text-gray-600 mb-2">Course Fee</div>
+              <div className="flex items-center justify-center space-x-2">
+                <IndianRupee className="w-8 h-8 text-cyan-600" />
+                <span className="text-4xl font-light text-gray-900">25,000</span>
+              </div>
+              <div className="text-sm text-gray-500 mt-2">One-time payment • No hidden charges</div>
+            </div>
+            <Button 
+              onClick={handlePayment}
+              disabled={isProcessing}
+              size="lg"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+            >
+              {isProcessing ? 'Processing...' : 'Enroll Now & Pay'}
+            </Button>
+          </div>
         </div>
       </section>
 
