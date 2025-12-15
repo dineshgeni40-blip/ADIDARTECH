@@ -25,7 +25,9 @@ import {
   Phone,
   MapPin,
   CheckCircle2,
-  ChevronDown
+  ChevronDown,
+  Menu,
+  X
 } from 'lucide-react';
 import { services, portfolio, testimonials, stats, clients, trainings } from '../mock';
 
