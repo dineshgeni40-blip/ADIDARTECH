@@ -166,6 +166,70 @@ const Home = () => {
             </Button>
           </nav>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100">
+            <div className="px-6 py-4 space-y-4">
+              <button 
+                onClick={() => { scrollToSection('services'); setMobileMenuOpen(false); }}
+                className="block w-full text-left text-gray-700 hover:text-cyan-600 transition-colors py-2"
+              >
+                Services
+              </button>
+              
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-gray-700 py-2">Software Trainings</div>
+                <div className="pl-4 space-y-2 max-h-64 overflow-y-auto">
+                  {trainings.map((training) => (
+                    <button
+                      key={training.id}
+                      onClick={() => { navigate(`/training/${training.slug}`); setMobileMenuOpen(false); }}
+                      className="block w-full text-left text-sm text-gray-600 hover:text-cyan-600 py-1"
+                    >
+                      {training.title}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              <button 
+                onClick={() => { scrollToSection('about'); setMobileMenuOpen(false); }}
+                className="block w-full text-left text-gray-700 hover:text-cyan-600 transition-colors py-2"
+              >
+                About
+              </button>
+              
+              <button 
+                onClick={() => { scrollToSection('clients'); setMobileMenuOpen(false); }}
+                className="block w-full text-left text-gray-700 hover:text-cyan-600 transition-colors py-2"
+              >
+                Clients
+              </button>
+              
+              <button 
+                onClick={() => { scrollToSection('portfolio'); setMobileMenuOpen(false); }}
+                className="block w-full text-left text-gray-700 hover:text-cyan-600 transition-colors py-2"
+              >
+                Portfolio
+              </button>
+              
+              <button 
+                onClick={() => { scrollToSection('testimonials'); setMobileMenuOpen(false); }}
+                className="block w-full text-left text-gray-700 hover:text-cyan-600 transition-colors py-2"
+              >
+                Testimonials
+              </button>
+              
+              <Button 
+                onClick={() => { scrollToSection('contact'); setMobileMenuOpen(false); }}
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+              >
+                Contact
+              </Button>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
