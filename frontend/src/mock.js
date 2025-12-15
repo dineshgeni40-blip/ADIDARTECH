@@ -369,5 +369,185 @@ export const trainings = [
       'Executive leadership certification',
       'Join exclusive AI leaders network'
     ]
+  },
+  {
+    id: 7,
+    slug: 'java-fullstack',
+    title: 'Java Full Stack Development',
+    shortDesc: 'Master Java backend and modern frontend frameworks to become a full stack developer',
+    duration: '3 Months',
+    level: 'Intermediate',
+    certification: true,
+    placementSupport: true,
+    overview: 'Comprehensive Java full stack training covering Spring Boot, Hibernate, React/Angular, microservices, and cloud deployment for enterprise applications.',
+    highlights: [
+      'Spring Boot & Spring Framework',
+      'React/Angular frontend development',
+      'Microservices architecture',
+      'Real-time enterprise projects',
+      '100% placement assistance'
+    ],
+    curriculum: [
+      'Core Java & Advanced Java',
+      'Spring Framework & Spring Boot',
+      'Hibernate & JPA',
+      'RESTful Web Services',
+      'React/Angular Frontend',
+      'Microservices Architecture',
+      'Database Design & SQL',
+      'DevOps & Cloud Deployment'
+    ],
+    prerequisites: 'Basic programming knowledge helpful but not required.',
+    outcomes: [
+      'Build enterprise-grade applications',
+      'Master Java ecosystem',
+      'Deploy full stack applications',
+      'Industry-recognized certification',
+      'Direct placement in top IT companies'
+    ]
+  },
+  {
+    id: 8,
+    slug: 'mern-stack',
+    title: 'MERN Stack Development',
+    shortDesc: 'Build modern web applications using MongoDB, Express, React, and Node.js',
+    duration: '3 Months',
+    level: 'Beginner',
+    certification: true,
+    placementSupport: true,
+    overview: 'Complete MERN stack training to build scalable, high-performance web applications using JavaScript across the entire stack.',
+    highlights: [
+      'Full JavaScript stack',
+      'Real-time application development',
+      'MERN portfolio projects',
+      'Industry best practices',
+      'Startup & product company placements'
+    ],
+    curriculum: [
+      'JavaScript ES6+ Fundamentals',
+      'React.js & Redux',
+      'Node.js & Express.js',
+      'MongoDB & Mongoose',
+      'RESTful API Development',
+      'Authentication & Authorization',
+      'Real-time with Socket.io',
+      'Deployment & Production Best Practices'
+    ],
+    prerequisites: 'Basic HTML/CSS knowledge. No prior programming required.',
+    outcomes: [
+      'Build full stack web applications',
+      'Master MERN technologies',
+      'Create real-time applications',
+      'MERN stack certification',
+      'Placement in tech startups & MNCs'
+    ]
+  },
+  {
+    id: 9,
+    slug: 'devops-cloud',
+    title: 'DevOps & Cloud (AWS & Azure)',
+    shortDesc: 'Master DevOps practices and cloud platforms for modern infrastructure management',
+    duration: '3 Months',
+    level: 'Intermediate',
+    certification: true,
+    placementSupport: true,
+    overview: 'Comprehensive DevOps training covering CI/CD, containerization, Kubernetes, AWS, Azure, and infrastructure as code for cloud-native deployments.',
+    highlights: [
+      'AWS & Azure dual certification track',
+      'Docker & Kubernetes mastery',
+      'CI/CD pipeline implementation',
+      'Infrastructure as Code (Terraform)',
+      'High-demand DevOps placements'
+    ],
+    curriculum: [
+      'Linux & Shell Scripting',
+      'Git & Version Control',
+      'Docker & Containerization',
+      'Kubernetes Orchestration',
+      'AWS Services & Architecture',
+      'Azure Cloud Platform',
+      'CI/CD with Jenkins/GitLab',
+      'Terraform & Infrastructure as Code'
+    ],
+    prerequisites: 'Basic understanding of software development and Linux.',
+    outcomes: [
+      'Implement CI/CD pipelines',
+      'Deploy on AWS & Azure',
+      'Master containerization',
+      'AWS & Azure certifications',
+      'DevOps engineer placement support'
+    ]
+  },
+  {
+    id: 10,
+    slug: 'oracle-dba',
+    title: 'Oracle Database Administrator',
+    shortDesc: 'Become an expert Oracle DBA managing enterprise database systems',
+    duration: '3 Months',
+    level: 'Advanced',
+    certification: true,
+    placementSupport: true,
+    overview: 'Advanced Oracle DBA training covering database architecture, performance tuning, backup/recovery, security, and enterprise database management.',
+    highlights: [
+      'Oracle 19c & 21c coverage',
+      'Real production scenarios',
+      'Performance tuning expertise',
+      'Backup & disaster recovery',
+      'Enterprise DBA placements'
+    ],
+    curriculum: [
+      'Oracle Architecture & Installation',
+      'Database Administration Basics',
+      'Backup & Recovery Strategies',
+      'Performance Tuning & Optimization',
+      'Security & User Management',
+      'RAC & Data Guard',
+      'Oracle Cloud Infrastructure',
+      'Troubleshooting & Best Practices'
+    ],
+    prerequisites: 'Basic database knowledge and SQL fundamentals required.',
+    outcomes: [
+      'Manage enterprise Oracle databases',
+      'Optimize database performance',
+      'Implement backup/recovery solutions',
+      'Oracle DBA certification',
+      'Senior DBA role placements'
+    ]
+  },
+  {
+    id: 11,
+    slug: 'selenium-automation',
+    title: 'Selenium Automation Testing',
+    shortDesc: 'Master automated testing with Selenium, TestNG, and modern testing frameworks',
+    duration: '3 Months',
+    level: 'Beginner',
+    certification: true,
+    placementSupport: true,
+    overview: 'Complete Selenium automation testing training covering test automation frameworks, CI/CD integration, and advanced testing strategies.',
+    highlights: [
+      'Selenium WebDriver mastery',
+      'Test automation frameworks',
+      'BDD with Cucumber',
+      'API testing with RestAssured',
+      'QA automation placements'
+    ],
+    curriculum: [
+      'Manual Testing Fundamentals',
+      'Java for Automation',
+      'Selenium WebDriver',
+      'TestNG & JUnit Frameworks',
+      'Page Object Model (POM)',
+      'Cucumber BDD Framework',
+      'API Testing with RestAssured',
+      'CI/CD Integration & Jenkins'
+    ],
+    prerequisites: 'No prior programming experience required. Basic computer skills needed.',
+    outcomes: [
+      'Automate web application testing',
+      'Build test automation frameworks',
+      'Integrate tests with CI/CD',
+      'Selenium certification',
+      'QA automation engineer placements'
+    ]
   }
 ];
