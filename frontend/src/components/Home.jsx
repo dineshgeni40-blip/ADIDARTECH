@@ -114,10 +114,12 @@ const Home = () => {
             </button>
             <Button 
               onClick={() => scrollToSection('contact')} 
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+              variant="outline"
+              className="border-gray-300 hover:border-cyan-500"
             >
               Contact
             </Button>
+            <PayNow />
           </nav>
         </div>
       </header>
