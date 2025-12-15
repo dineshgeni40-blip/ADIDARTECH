@@ -62,7 +62,7 @@ const PayNow = () => {
         key: key_id,
         amount: Math.round(parseFloat(amount) * 100),
         currency: 'INR',
-        name: 'Adidar Technologies',
+        name: 'ADIDAR TECH INDIA PRIVATE LIMITED',
         description: 'Payment for AI Services',
         order_id: order_id,
         handler: async function (response) {
