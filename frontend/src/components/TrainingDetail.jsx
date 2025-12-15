@@ -66,7 +66,7 @@ const TrainingDetail = () => {
         key: key_id,
         amount: COURSE_FEE * 100,
         currency: 'INR',
-        name: 'Adidar Technologies',
+        name: 'ADIDAR TECH INDIA PRIVATE LIMITED',
         description: `${training.title} - Training Program`,
         order_id: order_id,
         handler: async function (response) {
