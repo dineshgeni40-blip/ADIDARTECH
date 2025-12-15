@@ -97,15 +97,29 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-4 md:py-6 flex items-center justify-between">
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img 
               src="https://customer-assets.emergentagent.com/job_1cb238f1-67f4-4773-b5dd-94d6618d0eb9/artifacts/y3frjsns_adidar.png" 
               alt="Adidar Technologies" 
-              className="h-20 md:h-24 w-auto"
+              className="h-14 md:h-20 lg:h-24 w-auto"
               style={{ imageRendering: '-webkit-optimize-contrast', imageRendering: 'crisp-edges' }}
             />
           </div>
+          
+          {/* Mobile menu button */}
+          <button 
+            className="md:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6 text-gray-700" />
+            ) : (
+              <Menu className="h-6 w-6 text-gray-700" />
+            )}
+          </button>
+
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button onClick={() => scrollToSection('services')} className="text-sm text-gray-700 hover:text-cyan-600 transition-colors">
               Services
