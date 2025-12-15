@@ -210,6 +210,96 @@ async def submit_contact_form(form_data: ContactFormSubmission):
         logger.error(f"Error processing contact form: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to process contact form")
 
+# Initialize Razorpay client
+razorpay_client = razorpay.Client(auth=(os.environ.get('RAZORPAY_KEY_ID'), os.environ.get('RAZORPAY_KEY_SECRET')))
+
+@api_router.post("/payment/create-order")
+async def create_razorpay_order(order: PaymentOrder):
+    """Create a Razorpay order"""
+    try:
+        # Create order data
+        order_data = {
+            'amount': order.amount,  # Amount in paise
+            'currency': order.currency,
+            'receipt': order.receipt or f'receipt_{datetime.now(timezone.utc).timestamp()}',
+            'payment_capture': 1  # Auto capture payment
+        }
+        
+        # Create order
+        razorpay_order = razorpay_client.order.create(data=order_data)
+        
+        # Save order to database
+        order_doc = {
+            'order_id': razorpay_order['id'],
+            'amount': order.amount,
+            'currency': order.currency,
+            'receipt': order_data['receipt'],
+            'status': 'created',
+            'created_at': datetime.now(timezone.utc).isoformat()
+        }
+        await db.payment_orders.insert_one(order_doc)
+        
+        logger.info(f"Razorpay order created: {razorpay_order['id']}")
+        
+        return {
+            'order_id': razorpay_order['id'],
+            'amount': razorpay_order['amount'],
+            'currency': razorpay_order['currency'],
+            'key_id': os.environ.get('RAZORPAY_KEY_ID')
+        }
+        
+    except Exception as e:
+        logger.error(f"Error creating Razorpay order: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to create payment order: {str(e)}")
+
+@api_router.post("/payment/verify")
+async def verify_razorpay_payment(verification: PaymentVerification):
+    """Verify Razorpay payment signature"""
+    try:
+        # Verify signature
+        generated_signature = hmac.new(
+            os.environ.get('RAZORPAY_KEY_SECRET').encode(),
+            f"{verification.razorpay_order_id}|{verification.razorpay_payment_id}".encode(),
+            hashlib.sha256
+        ).hexdigest()
+        
+        if generated_signature != verification.razorpay_signature:
+            raise HTTPException(status_code=400, detail="Invalid payment signature")
+        
+        # Update order status in database
+        await db.payment_orders.update_one(
+            {'order_id': verification.razorpay_order_id},
+            {
+                '$set': {
+                    'status': 'paid',
+                    'payment_id': verification.razorpay_payment_id,
+                    'signature': verification.razorpay_signature,
+                    'paid_at': datetime.now(timezone.utc).isoformat()
+                }
+            }
+        )
+        
+        logger.info(f"Payment verified: {verification.razorpay_payment_id}")
+        
+        return {
+            'success': True,
+            'message': 'Payment verified successfully',
+            'payment_id': verification.razorpay_payment_id
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error verifying payment: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to verify payment")
+
+@api_router.get("/payment/key")
+async def get_razorpay_key():
+    """Get Razorpay key ID for frontend"""
+    return {
+        'key_id': os.environ.get('RAZORPAY_KEY_ID')
+    }
+
 # Include the router in the main app
 app.include_router(api_router)
 
