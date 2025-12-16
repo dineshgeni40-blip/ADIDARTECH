@@ -93,7 +93,7 @@ const PayNow = () => {
         prefill: {
           name: '',
           email: 'contact@adidartechnologies.com',
-          contact: '+919944562638'
+          contact: '+91-9944562638'
         },
         theme: {
           color: '#06b6d4'
